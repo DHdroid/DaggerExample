@@ -16,15 +16,19 @@ import javax.inject.Singleton
         AndroidInjectionModule::class,
         AndroidSupportInjectionModule::class,
         AppModule::class,
-        ActivityModule::class
+        NetworkModule::class,
+        ActivityModule::class,
+        MoshiModule::class
     ]
 )
 interface AppComponent : AndroidInjector<App> {
 
     @Component.Builder
-    interface  Builder {
+    interface Builder {
         @BindsInstance
         fun application(application: Application): Builder
+
+        fun networkModule(networkModule: NetworkModule): Builder
 
         fun build(): AppComponent
     }
